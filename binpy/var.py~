@@ -1,0 +1,26 @@
+
+def return_val(var_):
+    from .__var import var
+    var1 = var().all_var.get(var_)
+    del var
+    print(var1)
+    return var1
+
+def create_var(var_, change):
+    if not len(change) > 1:
+        change = ' '.join(change)
+    from .__var import var
+    var().all_var[var_] = change.split()
+    del var
+
+def __init__(root, argv):
+    if len(argv) > 2:
+        if argv[2] == '=':
+            create_var(argv[1], argv[3:])
+            return 0
+        else:
+            return 1
+    elif len(argv) > 1:
+        var = return_val(argv[1])
+        return var
+
